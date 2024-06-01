@@ -1,0 +1,19 @@
+.blog {
+  text-align: center;
+  padding: 20px;
+}
+
+.blog h1 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+}
+
+.blog p {
+  font-size: 1.2em;
+  margin-bottom: 20px;
+}
+
+.blog a {
+  text-decoration: none;
+  color: blue;
+}
