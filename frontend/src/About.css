@@ -1,0 +1,42 @@
+.about-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 0 2rem; /* Added padding for some breathing space */
+}
+
+.content-wrapper {
+  max-width: 800px;
+  text-align: center; /* Center-align text */
+  background: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 0 20px #00ffff, 0 0 30px #00ffff, 0 0 40px #00ffff; /* Glowing border effect */
+}
+
+.about-title {
+  color: #ffffff; /* Set text color to white */ /* Cyan color for cyberpunk feel */
+  animation: neon-flicker-about 1.5s infinite alternate;
+  font-size: 3rem;
+  font-family: "Orbitron", sans-serif;
+  margin-bottom: 1rem; /* Added margin for spacing */
+}
+
+@keyframes neon-flicker-about {
+  0%,
+  100% {
+    text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 30px #00ffff;
+  }
+  50% {
+    text-shadow: 0 0 20px #00ffff, 0 0 30px #00ffff, 0 0 40px #00ffff;
+  }
+}
+
+.about-para {
+  color: #ffffff;
+  font-size: 1.5rem;
+  margin: 1rem 0; /* Added margin for spacing between paragraphs */
+  line-height: 1.6; /* Improved line spacing for readability */
+  font-family: "Courier New", Courier, monospace; /* Monospace font for a techie feel */
+}

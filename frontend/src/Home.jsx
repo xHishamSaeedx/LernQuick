@@ -2,6 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import NavBar from "./NavBar";
 import Hero from "./Hero";
+import About from "./About"; // Import the About component
+import Contact from "./Contact"; // Import the Contact component
 import "./Home.css";
 import image1 from "./cybersecurity.jpg";
 import image2 from "./aidev.jpg";
@@ -44,6 +46,7 @@ function Home() {
     <div className="home">
       <NavBar />
       <Hero />
+      <About /> {/* Add the About component here */}
       <div className="background-image"></div>
       <div className="content">
         <div className="intro">
@@ -73,6 +76,13 @@ function Home() {
             </div>
           ))}
         </div>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <Contact /> {/* Add the Contact component here */}
       </div>
     </div>
   );
