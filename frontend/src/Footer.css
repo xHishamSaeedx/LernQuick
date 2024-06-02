@@ -1,0 +1,12 @@
+/* Footer.css */
+.footer {
+  background-color: rgba(0, 0, 0, 0.8); /* Black with 80% opacity */
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}

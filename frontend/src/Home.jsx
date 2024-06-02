@@ -1,14 +1,14 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Link } from "react-router-dom";
-import NavBar from "./NavBar";
 import Hero from "./Hero";
-import About from "./About"; // Import the About component
-import Contact from "./Contact"; // Import the Contact component
+import About from "./About";
+import Contact from "./Contact";
 import "./Home.css";
 import image1 from "./cybersecurity.jpg";
 import image2 from "./aidev.jpg";
 import image3 from "./webdev.jpg";
 import image4 from "./appdev.jpg";
+import Footer from "./Footer";
 
 const blogs = [
   {
@@ -42,13 +42,60 @@ const blogs = [
 ];
 
 function Home() {
+  const aboutRef = useRef(null);
+  const contactRef = useRef(null);
+  const coursesRef = useRef(null);
+
+  const handleScrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const handleScrollToAbout = () => {
+    aboutRef.current.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const handleScrollToContact = () => {
+    contactRef.current.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const handleScrollToCourses = () => {
+    const coursesSection = coursesRef.current;
+    if (coursesSection) {
+      const yOffset = -50; // Adjust this value as needed
+      const y =
+        coursesSection.getBoundingClientRect().top +
+        window.pageYOffset +
+        yOffset;
+      window.scrollTo({ top: y, behavior: "smooth" });
+    }
+  };
+
   return (
     <div className="home">
-      <NavBar />
+      <nav className="navbar">
+        <h1 onClick={handleScrollToTop}>LERNQUICK</h1>
+        <ul>
+          <li onClick={handleScrollToTop}>
+            <Link to="/">Home</Link>
+          </li>
+          <li onClick={handleScrollToAbout}>
+            <Link to="/">About</Link>
+          </li>
+          <li onClick={handleScrollToContact}>
+            <Link to="/">Contact</Link>
+          </li>
+          <li onClick={handleScrollToCourses}>
+            <Link to="/">Pick a Course</Link>
+          </li>
+        </ul>
+      </nav>
       <Hero />
-      <About /> {/* Add the About component here */}
+      <div ref={aboutRef}>
+        <About />
+      </div>
       <div className="background-image"></div>
       <div className="content">
+        <div ref={coursesRef}></div> {/* Placeholder div for the courses */}
         <div className="intro">
           <h1 className="intro-title flickering-text">PICK YOUR COURSE!</h1>
         </div>
@@ -82,8 +129,11 @@ function Home() {
         <br />
         <br />
         <br />
-        <Contact /> {/* Add the Contact component here */}
+        <div ref={contactRef}>
+          <Contact />
+        </div>
       </div>
+      <Footer /> {/* Add Footer component */}
     </div>
   );
 }
