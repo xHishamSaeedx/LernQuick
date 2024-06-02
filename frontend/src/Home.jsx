@@ -3,49 +3,40 @@ import { Link } from "react-router-dom";
 import NavBar from "./NavBar";
 import Hero from "./Hero";
 import "./Home.css";
+import image1 from "./cybersecurity.jpg";
+import image2 from "./aidev.jpg";
+import image3 from "./webdev.jpg";
+import image4 from "./appdev.jpg";
 
 const blogs = [
   {
     id: 1,
-    title: "Blog Post 1",
-    excerpt: "This is a short description of blog post 1.",
+    title: "Cybersecurity",
+    excerpt:
+      "Why don't cybersecurity experts ever get lost ? <br />Because they always follow the 'root' directory!",
+    image: image1,
   },
   {
     id: 2,
-    title: "Blog Post 2",
-    excerpt: "This is a short description of blog post 2.",
+    title: "AI and ML",
+    excerpt:
+      "Why did the AI go to therapy? <br />Because it had too many 'deep learning' issues!",
+    image: image2,
   },
   {
     id: 3,
-    title: "Blog Post 3",
-    excerpt: "This is a short description of blog post 3.",
+    title: "Web Development",
+    excerpt:
+      "Why did the JavaScript developer go broke? <br />Because he spent all his money buying 'cookies' for his website!",
+    image: image3,
   },
   {
     id: 4,
-    title: "Blog Post 4",
-    excerpt: "This is a short description of blog post 4.",
+    title: "App Development",
+    excerpt:
+      "Why did the app developer bring a pencil to the meeting?<br />Because he heard they were discussing 'app-solutely' important ideas!",
+    image: image4,
   },
-  {
-    id: 5,
-    title: "Blog Post 5",
-    excerpt: "This is a short description of blog post 5.",
-  },
-  {
-    id: 6,
-    title: "Blog Post 6",
-    excerpt: "This is a short description of blog post 6.",
-  },
-  {
-    id: 7,
-    title: "Blog Post 7",
-    excerpt: "This is a short description of blog post 7.",
-  },
-  {
-    id: 8,
-    title: "Blog Post 8",
-    excerpt: "This is a short description of blog post 8.",
-  },
-  // Add more blog posts as needed
 ];
 
 function Home() {
@@ -56,15 +47,29 @@ function Home() {
       <div className="background-image"></div>
       <div className="content">
         <div className="intro">
-          <h1>Welcome to the Blog</h1>
-          <p>This is an introduction to the blog. Enjoy reading!</p>
+          <h1 className="intro-title flickering-text">PICK YOUR COURSE!</h1>
         </div>
         <div className="cards">
           {blogs.map((blog) => (
             <div key={blog.id} className="card">
-              <h2>{blog.title}</h2>
-              <p>{blog.excerpt}</p>
-              <Link to={`/blog/${blog.id}`}>Read More</Link>
+              <h1
+                style={{
+                  textShadow:
+                    "0 0 10px #ff00ff, 0 0 20px #ff00ff, 0 0 30px #ff00ff",
+                }}
+                className="card-heading"
+              >
+                {blog.title}
+              </h1>
+              <br />
+              <img src={blog.image} alt={blog.title} />
+              <p
+                className="card-para"
+                dangerouslySetInnerHTML={{ __html: blog.excerpt }}
+              ></p>
+              <Link to={`/blog/${blog.id}`} className="learn-button">
+                Learn It
+              </Link>
             </div>
           ))}
         </div>

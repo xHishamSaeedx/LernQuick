@@ -38,34 +38,55 @@
 }
 
 .cards {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background: rgba(255, 255, 255, 0); /* Fully transparent background */
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Two columns by default */
+  gap: 30px; /* Increased gap between cards */
+  justify-items: center;
+  /* Responsive styles */
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(1, 1fr); /* One column on smaller screens */
+  }
 }
 
 .card {
-  border: 1px solid #ccc;
+  flex-direction: column;
+  align-items: center;
   border-radius: 8px;
   padding: 20px;
-  margin: 20px 0;
-  width: 70%;
-  max-width: 600px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  background: rgba(255, 255, 255, 0); /* Fully transparent background */
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3), 0 6px 6px rgba(0, 0, 0, 0.2);
+  width: 100%; /* Ensure card doesn't exceed grid column width */
+  max-width: 600px; /* Adjust max-width as needed */
+}
+
+.card:hover {
+  transform: translateY(-5px); /* Add a slight upward animation on hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Increase shadow on hover for depth */
 }
 
 .card h2 {
   font-size: 1.5em;
+  margin-bottom: 10px; /* Add some spacing between title and content */
 }
 
 .card p {
   font-size: 1em;
+  margin-bottom: 20px; /* Add spacing between content and link */
 }
 
 .card a {
   text-decoration: none;
-  color: blue;
+  color: #fff;
+  background-color: #ff00ff; /* Button background color */
+  padding: 8px 16px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease; /* Transition for button color change */
+}
+
+.card a:hover {
+  background-color: #00ffff; /* Change button color on hover */
 }
 
 .sample {
@@ -88,4 +109,64 @@
 
 .background-container {
   position: relative;
+}
+
+.card img {
+  width: 100%;
+  max-width: 100%; /* Ensure the image doesn't exceed the card width */
+  height: auto;
+  max-height: 300px; /* Adjust this height as needed */
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+@keyframes neon-flicker-home {
+  0%,
+  100% {
+    text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 30px #00ffff;
+  }
+  50% {
+    text-shadow: 0 0 20px #00ffff, 0 0 30px #00ffff, 0 0 40px #00ffff;
+  }
+}
+
+@keyframes fade-in-home {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.intro {
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0); /* Fully transparent background */
+}
+
+.intro-title {
+  font-size: 3rem;
+  font-family: "Orbitron", sans-serif;
+}
+
+.intro-title.flickering-text {
+  color: #ffffff; /* Set text color to white */
+  animation: neon-flicker-home 1.5s infinite alternate;
+}
+
+.card-para {
+  text-shadow: 1px 1px 0 #000, -1px 1px 0 #000, 1px -1px 0 #000,
+    -1px -1px 0 #000;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.card-heading {
+  font-family: "Orbitron", sans-serif;
+}
+
+.learn-button {
+  /* font-family: "Orbitron", sans-serif; */
+  font-weight: bold;
 }
