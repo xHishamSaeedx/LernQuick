@@ -1,0 +1,57 @@
+.navbar {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: linear-gradient(
+    to right,
+    #ff00ff,
+    #00ffff
+  ); /* Pink to blue gradient */
+  color: white;
+  margin-bottom: 0; /* Remove any bottom margin */
+}
+
+.navbar h1 {
+  margin: 0;
+  font-size: 2rem; /* Adjust font size */
+  font-family: "Orbitron", sans-serif; /* Cyberpunk font */
+  text-shadow: 0 0 5px #ff00ff, 0 0 10px #ff00ff, 0 0 15px #ff00ff; /* Pink neon shadow */
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar li {
+  margin: 0 1rem;
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+  font-family: "Roboto", sans-serif;
+  text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff, 0 0 15px #00ffff; /* Blue neon shadow */
+  transition: text-shadow 0.3s ease-in-out; /* Smooth transition */
+}
+
+.navbar a:hover {
+  text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 30px #00ffff; /* Brighter neon on hover */
+  text-decoration: underline;
+}
+
+/* Media query for smaller screens */
+@media screen and (max-width: 768px) {
+  .navbar {
+    flex-direction: column; /* Stack items vertically on smaller screens */
+    text-align: center; /* Center items */
+  }
+
+  .navbar li {
+    margin: 0.5rem 0; /* Reduce margin between list items */
+  }
+}
