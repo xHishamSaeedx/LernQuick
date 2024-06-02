@@ -15,7 +15,7 @@
   justify-content: center;
   background-color: #fff; /* You can adjust the background color */
   z-index: 9999; /* Ensure the animation is above other content */
-  animation: fadeOut 2.5s ease forwards; /* Adjust duration and timing function */
+  animation: fadeOut 2s ease forwards; /* Adjust duration and timing function */
   animation-delay: 0.75s;
 }
 
