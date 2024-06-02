@@ -1,3 +1,5 @@
+/* src/NavBar.css */
+
 .navbar {
   width: 100%;
   display: flex;
@@ -28,7 +30,7 @@
 }
 
 .navbar li {
-  margin: 0 1rem;
+  margin: 0;
 }
 
 .navbar a {
@@ -37,6 +39,7 @@
   font-family: "Roboto", sans-serif;
   text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff, 0 0 15px #00ffff; /* Blue neon shadow */
   transition: text-shadow 0.3s ease-in-out; /* Smooth transition */
+  padding: 0.5rem; /* Add padding to create space around the link text */
 }
 
 .navbar a:hover {
@@ -47,11 +50,12 @@
 /* Media query for smaller screens */
 @media screen and (max-width: 768px) {
   .navbar {
-    flex-direction: column; /* Stack items vertically on smaller screens */
+    flex-direction: column; /* Stack items vertically */
     text-align: center; /* Center items */
+    padding: 0.5rem 0; /* Adjust vertical padding */
   }
 
   .navbar li {
-    margin: 0.5rem 0; /* Reduce margin between list items */
+    margin: 0.5rem 0; /* Increase margin between list items */
   }
 }
