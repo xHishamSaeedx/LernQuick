@@ -26,7 +26,7 @@ function App() {
                 key={index}
                 className="strip"
                 style={{
-                  animationDelay: `${0.1 * index}s`,
+                  animationDelay: `${0.1 * index + 0.25}s`,
                   backgroundColor: shade,
                 }}
               ></div>
