@@ -2,6 +2,31 @@
   position: relative;
 }
 
+.strips-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  z-index: 9999; /* Ensure the strips are above other content */
+  overflow: hidden;
+}
+
+.strip {
+  flex: 1;
+  animation: slideUp 0.3s ease forwards; /* Adjust duration and timing function */
+}
+
+@keyframes slideUp {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
+
 /* Existing styles */
 
 .logo {
