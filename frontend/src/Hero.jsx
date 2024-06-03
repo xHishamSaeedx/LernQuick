@@ -6,7 +6,6 @@ function Hero() {
     <div className="hero">
       <div className="hero-content">
         <h1 className="hero-title">LernQuick</h1>
-        <p className="hero-message">Learning made Faster</p>
       </div>
     </div>
   );

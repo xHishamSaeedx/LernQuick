@@ -1,5 +1,5 @@
 .hero {
-  background-image: url("./1350469.png"); /* Add the path to your image */
+  background-image: url("./introwallpaper.jpg"); /* Add the path to your image */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -23,15 +23,18 @@
 }
 
 .hero-content {
-  position: relative;
+  position: absolute;
+  top: 33%; /* Positioning the content at 1/3rd from the top */
+  left: 50%;
+  transform: translate(-50%, -50%);
   z-index: 1;
 }
 
 .hero-title {
   font-size: 3rem;
   font-family: "Orbitron", sans-serif;
-  text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff, 0 0 30px #ff00ff;
-  animation: neon-flicker 1.5s infinite alternate;
+  text-shadow: 0 0 10px #ff7f00, 0 0 20px #ff7f00, 0 0 30px #ff7f00;
+  /* animation: neon-flicker 1.5s infinite alternate; */
 }
 
 .hero-message {

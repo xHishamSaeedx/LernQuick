@@ -5,10 +5,11 @@
   padding: 0;
   position: relative;
   overflow: hidden;
+  background-color: #000;
 }
 
 .background-image {
-  background-image: url("./image2.png");
+  background-image: url("./black2.jpg");
   background-size: cover;
   background-attachment: fixed;
   background-position: center;
@@ -30,6 +31,7 @@
   margin: 20px auto; /* Center the content div */
   width: 90%; /* Set a maximum width for larger screens */
   max-width: 1200px; /* Set a maximum width for larger screens */
+  background-color: #000;
 }
 
 .intro {
@@ -79,7 +81,7 @@
 .card a {
   text-decoration: none;
   color: #fff;
-  background-color: #ff00ff; /* Button background color */
+  background-color: #ff7f00; /* Button background color */
   padding: 8px 16px;
   border-radius: 4px;
   transition: background-color 0.3s ease; /* Transition for button color change */
@@ -151,7 +153,6 @@
 
 .intro-title.flickering-text {
   color: #ffffff; /* Set text color to white */
-  animation: neon-flicker-home 1.5s infinite alternate;
 }
 
 .card-para {
@@ -177,11 +178,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
-  background: linear-gradient(
-    to right,
-    #ff00ff,
-    #00ffff
-  ); /* Pink to blue gradient */
+  background: black; /* Pink to blue gradient */
   color: white;
   position: fixed; /* Fix the navbar at the top */
   top: 0; /* Position it at the top of the viewport */
@@ -193,7 +190,6 @@
   margin: 0;
   font-size: 2rem; /* Adjust font size */
   font-family: "Orbitron", sans-serif; /* Cyberpunk font */
-  text-shadow: 0 0 5px #ff00ff, 0 0 10px #ff00ff, 0 0 15px #ff00ff; /* Pink neon shadow */
 }
 
 .navbar ul {
@@ -211,7 +207,6 @@
   color: white;
   text-decoration: none;
   font-family: "Roboto", sans-serif;
-  text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff, 0 0 15px #00ffff; /* Blue neon shadow */
   transition: text-shadow 0.3s ease-in-out; /* Smooth transition */
 }
 

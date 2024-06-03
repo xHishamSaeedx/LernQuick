@@ -93,7 +93,6 @@ function Home() {
       <div ref={aboutRef}>
         <About />
       </div>
-      <div className="background-image"></div>
       <div className="content">
         <div ref={coursesRef}></div> {/* Placeholder div for the courses */}
         <div className="intro">
@@ -102,15 +101,7 @@ function Home() {
         <div className="cards">
           {blogs.map((blog) => (
             <div key={blog.id} className="card">
-              <h1
-                style={{
-                  textShadow:
-                    "0 0 10px #ff00ff, 0 0 20px #ff00ff, 0 0 30px #ff00ff",
-                }}
-                className="card-heading"
-              >
-                {blog.title}
-              </h1>
+              <h1 className="card-heading">{blog.title}</h1>
               <br />
               <img src={blog.image} alt={blog.title} />
               <p
