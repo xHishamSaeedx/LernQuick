@@ -1,30 +1,51 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import "./Blog.css";
 
-const blogContent = {
-  1: {
-    title: "Blog Post 1",
-    content:
-      "This is the detailed content of blog post 1. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-  },
-  2: {
-    title: "Blog Post 2",
-    content:
-      "This is the detailed content of blog post 2. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-  },
-  // Add more blog posts as needed
-};
-
 function Blog() {
   const { id } = useParams();
-  const blog = blogContent[id];
+  const [blog, setBlog] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    // Fetch the blog post from the backend
+    fetch(`http://localhost:5000/api/blog/${id}`)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        setBlog(data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        setError(error);
+        setLoading(false);
+      });
+  }, [id]);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
 
   return (
     <div className="blog">
-      <h1>{blog.title}</h1>
-      <p>{blog.content}</p>
-      <Link to="/">Back to Home</Link>
+      {blog ? (
+        <>
+          <h1>{blog.title}</h1>
+          <p>{blog.content}</p>
+          <Link to="/">Back to Home</Link>
+        </>
+      ) : (
+        <div>Blog post not found</div>
+      )}
     </div>
   );
 }
