@@ -1,6 +1,9 @@
+/* Blog.css */
+
 .blog {
   text-align: center;
   padding: 20px;
+  padding-top: 80px; /* Adjust this value based on your navbar height */
 }
 
 .blog h1 {
@@ -15,5 +18,4 @@
 
 .blog a {
   text-decoration: none;
-  color: blue;
 }

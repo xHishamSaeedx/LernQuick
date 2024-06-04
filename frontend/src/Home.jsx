@@ -9,6 +9,7 @@ import image2 from "./aidev.jpg";
 import image3 from "./webdev.jpg";
 import image4 from "./appdev.jpg";
 import Footer from "./Footer";
+import Navbar from "./Navbar";
 
 const blogs = [
   {
@@ -72,29 +73,18 @@ function Home() {
 
   return (
     <div className="home">
-      <nav className="navbar">
-        <h1 onClick={handleScrollToTop}>LERNQUICK</h1>
-        <ul>
-          <li onClick={handleScrollToTop}>
-            <Link to="/">Home</Link>
-          </li>
-          <li onClick={handleScrollToAbout}>
-            <Link to="/">About</Link>
-          </li>
-          <li onClick={handleScrollToContact}>
-            <Link to="/">Contact</Link>
-          </li>
-          <li onClick={handleScrollToCourses}>
-            <Link to="/">Pick a Course</Link>
-          </li>
-        </ul>
-      </nav>
+      <Navbar
+        handleScrollToTop={handleScrollToTop}
+        handleScrollToAbout={handleScrollToAbout}
+        handleScrollToContact={handleScrollToContact}
+        handleScrollToCourses={handleScrollToCourses}
+      />
       <Hero />
-      <div ref={aboutRef}>
+      <div id="about-section" ref={aboutRef}>
         <About />
       </div>
       <div className="content">
-        <div ref={coursesRef}></div> {/* Placeholder div for the courses */}
+        <div id="courses-section" ref={coursesRef}></div>
         <div className="intro">
           <h1 className="intro-title flickering-text">PICK YOUR COURSE!</h1>
         </div>
@@ -120,11 +110,11 @@ function Home() {
         <br />
         <br />
         <br />
-        <div ref={contactRef}>
+        <div id="contact-section" ref={contactRef}>
           <Contact />
         </div>
       </div>
-      <Footer /> {/* Add Footer component */}
+      <Footer />
     </div>
   );
 }
