@@ -63,7 +63,7 @@
   background-color: #000; /* Black background */
   color: #ff7f00; /* Gold text color */
   position: fixed;
-  top: 80px; /* Adjust this value based on your navbar height */
+  top: 60px; /* Adjust this value based on your navbar height */
   left: 0;
   height: 100%;
   overflow-y: auto;
@@ -72,8 +72,9 @@
 
 .sidebar h2 {
   font-size: 1.5em;
-  margin-bottom: 10px;
-  color: #ff7f00; /* Gold color for headers */
+  margin: 0; /* Remove the default margin */
+  margin-bottom: 10px; /* Add margin-bottom if needed */
+  color: #ff7f00;
 }
 
 .sidebar ul {
