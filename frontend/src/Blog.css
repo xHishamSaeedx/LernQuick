@@ -71,20 +71,20 @@
   width: 200px;
   padding: 20px;
   background-color: #000; /* Black background */
-  color: #ff7f00; /* Gold text color */
+  color: #ff8000; /* Gold text color */
   position: fixed;
   top: 60px; /* Adjust this value based on your navbar height */
   left: 0;
   height: 100%;
   overflow-y: auto;
-  border-right: 1px solid #ff7f00; /* Thin golden line on the right */
+  border-right: 1px solid #ff8000; /* Thin golden line on the right */
 }
 
 .sidebar h2 {
   font-size: 1.5em;
   margin: 0; /* Remove the default margin */
   margin-bottom: 20px; /* Increased margin-bottom */
-  color: #ff7f00;
+  color: #ff8000;
 }
 
 .sidebar ul {
@@ -99,7 +99,7 @@
 .sidebar ul li button {
   background-color: #000; /* Black background */
   border: 0; /* Remove border */
-  color: #ff7f00; /* Gold text color */
+  color: #ff8000; /* Gold text color */
   cursor: pointer;
   text-align: left;
   padding: 10px;
@@ -110,7 +110,7 @@
 }
 
 .sidebar ul li button:hover {
-  background-color: #ff7f00; /* Gold background on hover */
+  background-color: #ff8000; /* Gold background on hover */
   color: #000; /* Black text on hover */
 }
 
@@ -144,7 +144,7 @@
 
 .blog a {
   text-decoration: none;
-  color: #ff7f00; /* Gold color for links */
+  color: #ff8000; /* Gold color for links */
 }
 
 .blog a:hover {

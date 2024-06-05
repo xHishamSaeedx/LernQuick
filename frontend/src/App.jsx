@@ -6,7 +6,14 @@ import "./App.css";
 
 function App() {
   const [showStrips, setShowStrips] = useState(true);
-  const shades = ["#ffcc80", "#ffb74d", "#ffa726", "#ff9800", "#fb8c00"]; // Different shades
+  const shades = [
+    "#FFD699", // Lighter shade of orange-red
+    "#FFB366", // Slightly darker and more orange-reddish
+    "#FF984D", // Deeper orange-red
+    "#FF8000", // Even deeper orange-red
+    "#FF6600", // Darkest shade of orange-red
+  ];
+  // Different shades
 
   useEffect(() => {
     const animationTimeout = setTimeout(() => {

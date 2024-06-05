@@ -11,7 +11,7 @@
   top: 0; /* Position it at the top of the viewport */
   left: 0; /* Align it to the left */
   z-index: 1000; /* Ensure it appears above other content */
-  border-bottom: 2px solid #ff7f00; /* Thin line at the bottom with desired color */
+  border-bottom: 2px solid #ff8000; /* Thin line at the bottom with desired color */
 }
 
 .navbar h1 {
