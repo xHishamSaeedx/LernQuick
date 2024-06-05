@@ -1,5 +1,3 @@
-/* Blog.css */
-
 /* Updated styles for code blocks */
 .code-block {
   background-color: #f8f9fa; /* Light gray background */
@@ -44,6 +42,18 @@
   font-size: 16px;
 }
 
+/* Increased spacing between section_content */
+.subsection {
+  margin-bottom: 40px;
+}
+
+/* More readable page_section_title */
+.heading h3 {
+  font-size: em; /* Increased font size */
+  color: #333; /* Darker color for better readability */
+  margin-bottom: 20px; /* Increased margin */
+}
+
 /* Styles for active sidebar button */
 .sidebar ul li button.active {
   background-color: #f0f0f0;
@@ -73,7 +83,7 @@
 .sidebar h2 {
   font-size: 1.5em;
   margin: 0; /* Remove the default margin */
-  margin-bottom: 10px; /* Add margin-bottom if needed */
+  margin-bottom: 20px; /* Increased margin-bottom */
   color: #ff7f00;
 }
 
@@ -114,15 +124,15 @@
 }
 
 .blog h1 {
-  font-size: 2.5em;
-  margin-bottom: 20px;
+  font-size: 3.5em;
+  margin-bottom: 30px;
   color: #000; /* Black color for main heading */
 }
 
 .blog h2 {
-  font-size: 2em;
+  font-size: 2.5em;
   margin-top: 40px;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
   color: #000; /* Black color for section headings */
 }
 
@@ -140,4 +150,10 @@
 .blog a:hover {
   text-decoration: underline;
   color: #ffd700; /* Lighter gold on hover */
+}
+
+.page-section-title-h3 {
+  font-size: 2em;
+  color: #000;
+  margin-bottom: 25px;
 }

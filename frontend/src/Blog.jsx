@@ -85,6 +85,14 @@ function Blog() {
             </pre>
           </div>
         );
+      } else if (item.type === "heading") {
+        return (
+          <div key={index} className="heading">
+            <h3 style={{ fontSize: "1.5em", marginBottom: "15px" }}>
+              {item.content}
+            </h3>
+          </div>
+        );
       }
       return null;
     });
@@ -128,7 +136,9 @@ function Blog() {
                 <h2>{section.section_title}</h2>
                 {section.section_content.map((subsection, subIndex) => (
                   <div key={subIndex} className="subsection">
-                    <h3>{subsection.page_section_title}</h3>
+                    <h3 className="page-section-title-h3">
+                      {subsection.page_section_title}
+                    </h3>
                     {renderContent(subsection.page_section_content)}
                     {subIndex !== section.section_content.length - 1 && <hr />}
                   </div>

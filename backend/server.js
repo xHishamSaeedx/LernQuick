@@ -54,6 +54,64 @@ const blogPosts = {
               },
             ],
           },
+          {
+            page_section_title: "Intro",
+            page_section_content: [
+              {
+                type: "paragraph",
+                content: `
+                  HTML, or HyperText Markup Language, is the standard markup language used to create and design web pages. It structures content on the web by defining various elements such as headings, paragraphs, links, images, and other multimedia. HTML uses a system of tags and attributes to annotate text and multimedia documents, making them interactive and visually appealing in web browsers
+                  `,
+              },
+              {
+                type: "code",
+                language: "HTML",
+                content: `
+                    <!DOCTYPE html>
+                    <html>
+                    <head>
+                        <title>My First Web Page</title>
+                    </head>
+                    <body>
+                    
+                        <h1>Hello, World!</h1>
+                        <p>This is my first web page.</p>
+                    
+                    </body>
+                    </html>
+            `,
+              },
+            ],
+          },
+          {
+            page_section_title: "Intro",
+            page_section_content: [
+              {
+                type: "paragraph",
+                content: `
+                  HTML, or HyperText Markup Language, is the standard markup language used to create and design web pages. It structures content on the web by defining various elements such as headings, paragraphs, links, images, and other multimedia. HTML uses a system of tags and attributes to annotate text and multimedia documents, making them interactive and visually appealing in web browsers
+                  `,
+              },
+              {
+                type: "code",
+                language: "HTML",
+                content: `
+                    <!DOCTYPE html>
+                    <html>
+                    <head>
+                        <title>My First Web Page</title>
+                    </head>
+                    <body>
+                    
+                        <h1>Hello, World!</h1>
+                        <p>This is my first web page.</p>
+                    
+                    </body>
+                    </html>
+            `,
+              },
+            ],
+          },
         ],
       },
       {
