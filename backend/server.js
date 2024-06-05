@@ -56,6 +56,41 @@ const blogPosts = {
           },
         ],
       },
+      {
+        section_title: "CSS",
+        section_content: [
+          {
+            page_section_title: "Intro",
+            page_section_content: [
+              {
+                type: "paragraph",
+                content: `
+                  CSS, or Cascading Style Sheets, is a style sheet language used to describe the presentation of a document written in HTML. It is used to control the layout, design, and appearance of multiple web pages all at once. CSS allows web developers to create a consistent look and feel across a website, making it visually appealing and user-friendly.
+                  `,
+              },
+              {
+                type: "code",
+                language: "CSS",
+                content: `
+                    body {
+                        background-color: lightblue;
+                    }
+                    
+                    h1 {
+                        color: white;
+                        text-align: center;
+                    }
+                    
+                    p {
+                        font-family: verdana;
+                        font-size: 20px;
+                    }
+            `,
+              },
+            ],
+          },
+        ],
+      },
     ],
   },
   4: {

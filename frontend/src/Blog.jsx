@@ -1,6 +1,7 @@
-// Blog.jsx
 import React, { useState, useEffect } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
+import hljs from "highlight.js";
+import "highlight.js/styles/github.css"; // You can choose different styles available
 import Navbar from "./Navbar"; // Import Navbar component
 import "./Blog.css";
 
@@ -9,6 +10,7 @@ function Blog() {
   const [blog, setBlog] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [selectedSection, setSelectedSection] = useState(0);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -30,6 +32,29 @@ function Blog() {
       });
   }, [id]);
 
+  useEffect(() => {
+    // Highlight the code blocks after rendering
+    if (blog) {
+      document.querySelectorAll("pre code").forEach((block) => {
+        hljs.highlightBlock(block);
+      });
+    }
+  }, [blog]);
+
+  const handleScrollToSection = (sectionId, index) => {
+    setSelectedSection(index);
+
+    // Add active class to the clicked button and remove from others
+    const buttons = document.querySelectorAll(".sidebar ul li button");
+    buttons.forEach((button, i) => {
+      if (i === index) {
+        button.classList.add("active");
+      } else {
+        button.classList.remove("active");
+      }
+    });
+  };
+
   const handleScrollToTop = () => {
     navigate("/");
     setTimeout(() => {
@@ -37,66 +62,81 @@ function Blog() {
     }, 100);
   };
 
-  const handleScrollToAbout = () => {
-    navigate("/");
-    setTimeout(() => {
-      const aboutSection = document.getElementById("about-section");
-      if (aboutSection) {
-        aboutSection.scrollIntoView({ behavior: "smooth" });
+  const renderContent = (content) => {
+    return content.map((item, index) => {
+      if (item.type === "paragraph") {
+        return <p key={index}>{item.content}</p>;
+      } else if (item.type === "code") {
+        return (
+          <div key={index} className="code-block">
+            <div className="code-header">
+              <span>{item.language.toUpperCase()}</span>
+              <button
+                onClick={() => {
+                  navigator.clipboard.writeText(item.content);
+                  alert("Code copied to clipboard!");
+                }}
+              >
+                Copy Code
+              </button>
+            </div>
+            <pre>
+              <code className={item.language}>{item.content}</code>
+            </pre>
+          </div>
+        );
       }
-    }, 100);
+      return null;
+    });
   };
-
-  const handleScrollToContact = () => {
-    navigate("/");
-    setTimeout(() => {
-      const contactSection = document.getElementById("contact-section");
-      if (contactSection) {
-        contactSection.scrollIntoView({ behavior: "smooth" });
-      }
-    }, 100);
-  };
-
-  const handleScrollToCourses = () => {
-    navigate("/");
-    setTimeout(() => {
-      const coursesSection = document.getElementById("courses-section");
-      if (coursesSection) {
-        const yOffset = -50; // Adjust this value as needed
-        const y =
-          coursesSection.getBoundingClientRect().top +
-          window.pageYOffset +
-          yOffset;
-        window.scrollTo({ top: y, behavior: "smooth" });
-      }
-    }, 100);
-  };
-
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
-  if (error) {
-    return <div>Error: {error.message}</div>;
-  }
 
   return (
-    <div>
-      <Navbar
-        handleScrollToTop={handleScrollToTop}
-        handleScrollToAbout={handleScrollToAbout}
-        handleScrollToContact={handleScrollToContact}
-        handleScrollToCourses={handleScrollToCourses}
-      />
+    <div className="blog-container">
+      <Navbar handleScrollToTop={handleScrollToTop} />
+      <div className="sidebar">
+        <h2>Sections</h2>
+        <ul>
+          {blog &&
+            blog.Sections.map((section, index) => (
+              <li key={index}>
+                <button
+                  onClick={() =>
+                    handleScrollToSection(`section-${index}`, index)
+                  }
+                  className={selectedSection === index ? "active" : ""}
+                >
+                  {section.section_title}
+                </button>
+              </li>
+            ))}
+        </ul>
+      </div>
       <div className="blog">
-        {blog ? (
+        {loading && <div>Loading...</div>}
+        {error && <div>Error: {error.message}</div>}
+        {blog && (
           <>
             <h1>{blog.title}</h1>
-            <p>{blog.content}</p>
+            {blog.Sections.map((section, index) => (
+              <div
+                key={index}
+                id={`section-${index}`}
+                style={{
+                  display: selectedSection === index ? "block" : "none",
+                }}
+              >
+                <h2>{section.section_title}</h2>
+                {section.section_content.map((subsection, subIndex) => (
+                  <div key={subIndex} className="subsection">
+                    <h3>{subsection.page_section_title}</h3>
+                    {renderContent(subsection.page_section_content)}
+                    {subIndex !== section.section_content.length - 1 && <hr />}
+                  </div>
+                ))}
+              </div>
+            ))}
             <Link to="/">Back to Home</Link>
           </>
-        ) : (
-          <div>Blog post not found</div>
         )}
       </div>
     </div>
