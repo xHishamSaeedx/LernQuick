@@ -8,6 +8,7 @@ const Navbar = ({
   handleScrollToAbout,
   handleScrollToContact,
   handleScrollToCourses,
+  blogSections = [], // Add blog sections as a prop
 }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
@@ -24,10 +25,10 @@ const Navbar = ({
   return (
     <nav className="navbar">
       <div className="navbar-container">
-        <h1 onClick={() => navigateAndScroll(handleScrollToTop)}>LERNQUICK</h1>
         <div className="hamburger" onClick={toggleMenu}>
           ☰
         </div>
+        <h1 onClick={() => navigateAndScroll(handleScrollToTop)}>LERNQUICK</h1>
         <ul className={menuOpen ? "menu open" : "menu"}>
           <li
             onClick={() => {
@@ -61,7 +62,24 @@ const Navbar = ({
           >
             <Link to="/">Pick a Course</Link>
           </li>
+          {/* Blog section links */}
+          {blogSections.map((section, index) => (
+            <li key={index}>
+              <button
+                onClick={() => {
+                  /* Add function to handle blog section scroll */
+                }}
+              >
+                {section.section_title}
+              </button>
+            </li>
+          ))}
         </ul>
+        {menuOpen && (
+          <div className="close-icon" onClick={toggleMenu}>
+            &#10006; {/* Cross symbol */}
+          </div>
+        )}
       </div>
     </nav>
   );
