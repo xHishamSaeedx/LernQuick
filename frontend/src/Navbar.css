@@ -1,10 +1,6 @@
 /* Navbar.css */
 .navbar {
   width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem;
   background: black; /* Background color */
   color: white;
   position: fixed; /* Fix the navbar at the top */
@@ -14,11 +10,24 @@
   border-bottom: 2px solid #ff8000; /* Thin line at the bottom with desired color */
 }
 
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
+
 .navbar h1 {
   margin: 0;
   font-size: 2rem; /* Adjust font size */
   font-family: "Orbitron", sans-serif; /* Cyberpunk font */
   cursor: pointer; /* Change cursor to pointer */
+}
+
+.navbar .hamburger {
+  display: none;
+  font-size: 2rem;
+  cursor: pointer;
 }
 
 .navbar ul {
@@ -46,12 +55,39 @@
 
 /* Media query for smaller screens */
 @media screen and (max-width: 768px) {
-  .navbar {
-    flex-direction: column; /* Stack items vertically */
-    text-align: center; /* Center items */
+  .navbar-container {
+    justify-content: flex-start; /* Align items to the start */
+  }
+
+  .navbar h1 {
+    flex-grow: 1; /* Make it take up remaining space */
+    text-align: center; /* Center the logo */
+  }
+
+  .navbar .hamburger {
+    display: block;
+  }
+
+  .navbar ul {
+    flex-direction: column;
+    display: none; /* Hide the menu by default */
+    position: fixed; /* Fix the position */
+    left: 0; /* Align to the left */
+    top: 0; /* Align to the top */
+    height: 100%; /* Full height */
+    width: 250px; /* Fixed width */
+    background: black; /* Match background */
+    padding-top: 3rem; /* Add some padding at the top */
+    transition: transform 0.3s ease; /* Smooth transition */
+    transform: translateX(-100%); /* Initially hide the menu */
+  }
+
+  .navbar ul.menu.open {
+    display: flex; /* Ensure menu is displayed when open */
+    transform: translateX(0); /* Slide in the menu */
   }
 
   .navbar li {
-    margin: 0.5rem 0; /* Increase margin between list items */
+    margin: 1rem 0; /* Increase margin between list items */
   }
 }
