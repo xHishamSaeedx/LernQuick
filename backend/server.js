@@ -1,176 +1,49 @@
 const express = require("express");
 const app = express();
 const cors = require("cors");
-const PORT = process.env.PORT || 5000;
+const mongoose = require('mongoose');
+const PORT = "mongodb+srv://mohammedaymanquadri:Ayman2004@cluster0.zoasruc.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0/LernTek";
+
+const Courses = require('./models/courses');
+const courseController = require('./controllers/courses'); 
 
 // Middleware
 app.use(cors());
 app.use(express.json());
 
-// Sample data (in a real scenario, you'd fetch this from a database)
-const blogPosts = {
-  1: {
-    title: "Cybersecurity",
-    content:
-      "This is the detailed content of blog post 1. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-  },
-  2: {
-    title: "AI and ML",
-    content:
-      "This is the detailed content of blog post 2. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-  },
-  3: {
-    title: "Web Development",
-    Sections: [
-      {
-        section_title: "HTML",
-        section_content: [
-          {
-            page_section_title: "Intro",
-            page_section_content: [
-              {
-                type: "paragraph",
-                content: `
-                  HTML, or HyperText Markup Language, is the standard markup language used to create and design web pages. It structures content on the web by defining various elements such as headings, paragraphs, links, images, and other multimedia. HTML uses a system of tags and attributes to annotate text and multimedia documents, making them interactive and visually appealing in web browsers
-                  `,
-              },
-              {
-                type: "code",
-                language: "HTML",
-                content: `
-                    <!DOCTYPE html>
-                    <html>
-                    <head>
-                        <title>My First Web Page</title>
-                    </head>
-                    <body>
-                    
-                        <h1>Hello, World!</h1>
-                        <p>This is my first web page.</p>
-                    
-                    </body>
-                    </html>
-            `,
-              },
-            ],
-          },
-          {
-            page_section_title: "Intro",
-            page_section_content: [
-              {
-                type: "paragraph",
-                content: `
-                  HTML, or HyperText Markup Language, is the standard markup language used to create and design web pages. It structures content on the web by defining various elements such as headings, paragraphs, links, images, and other multimedia. HTML uses a system of tags and attributes to annotate text and multimedia documents, making them interactive and visually appealing in web browsers
-                  `,
-              },
-              {
-                type: "code",
-                language: "HTML",
-                content: `
-                    <!DOCTYPE html>
-                    <html>
-                    <head>
-                        <title>My First Web Page</title>
-                    </head>
-                    <body>
-                    
-                        <h1>Hello, World!</h1>
-                        <p>This is my first web page.</p>
-                    
-                    </body>
-                    </html>
-            `,
-              },
-            ],
-          },
-          {
-            page_section_title: "Intro",
-            page_section_content: [
-              {
-                type: "paragraph",
-                content: `
-                  HTML, or HyperText Markup Language, is the standard markup language used to create and design web pages. It structures content on the web by defining various elements such as headings, paragraphs, links, images, and other multimedia. HTML uses a system of tags and attributes to annotate text and multimedia documents, making them interactive and visually appealing in web browsers
-                  `,
-              },
-              {
-                type: "code",
-                language: "HTML",
-                content: `
-                    <!DOCTYPE html>
-                    <html>
-                    <head>
-                        <title>My First Web Page</title>
-                    </head>
-                    <body>
-                    
-                        <h1>Hello, World!</h1>
-                        <p>This is my first web page.</p>
-                    
-                    </body>
-                    </html>
-            `,
-              },
-            ],
-          },
-        ],
-      },
-      {
-        section_title: "CSS",
-        section_content: [
-          {
-            page_section_title: "Intro",
-            page_section_content: [
-              {
-                type: "paragraph",
-                content: `
-                  CSS, or Cascading Style Sheets, is a style sheet language used to describe the presentation of a document written in HTML. It is used to control the layout, design, and appearance of multiple web pages all at once. CSS allows web developers to create a consistent look and feel across a website, making it visually appealing and user-friendly.
-                  `,
-              },
-              {
-                type: "code",
-                language: "CSS",
-                content: `
-                    body {
-                        background-color: lightblue;
-                    }
-                    
-                    h1 {
-                        color: white;
-                        text-align: center;
-                    }
-                    
-                    p {
-                        font-family: verdana;
-                        font-size: 20px;
-                    }
-            `,
-              },
-            ],
-          },
-        ],
-      },
-    ],
-  },
-  4: {
-    title: "App Development",
-    content:
-      "This is the detailed content of blog post 4. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-  },
-  // Add more blog posts as needed
-};
 
 // Route to get blog post by ID
-app.get("/api/blog/:id", (req, res) => {
-  const { id } = req.params;
-  const blogPost = blogPosts[id];
+app.get('/api/blog/:id', async (req, res) => {
+  const {id} = req.params;
 
-  if (blogPost) {
-    res.json(blogPost);
-  } else {
-    res.status(404).json({ message: "Blog post not found" });
-  }
+  Courses.findOne({ id: id.trim() })
+  .then(course => {
+    if (course) {
+      console.log("Course found and is now being sent!");
+      res.json(course);
+    } else {
+      res.status(404).json({ message: 'Course not found' });
+    }
+  })
+  .catch(error => {
+    console.log("some err occured in finding");
+    res.status(500).json({ message: 'Server error', error });
+  });
+
 });
 
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
+//to add courses
+//courseController.addCourse();
+
+
+// app.listen(PORT, () => {
+//   console.log(`Server is running on port ${PORT}`);
+// });
+mongoose.connect(PORT)
+    .then(() => { 
+        console.log('Connected to MongoDB !'); 
+        app.listen(5000);
+    })
+    .catch((error) => {
+        console.error('Error connecting to MongoDB:', error);
+    });
