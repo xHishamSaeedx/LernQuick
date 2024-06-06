@@ -1,4 +1,3 @@
-// Navbar.jsx
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./Navbar.css";
@@ -8,7 +7,9 @@ const Navbar = ({
   handleScrollToAbout,
   handleScrollToContact,
   handleScrollToCourses,
-  blogSections = [], // Add blog sections as a prop
+  blogSections,
+  handleScrollToSection,
+  selectedSection, // Add selectedSection prop
 }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
@@ -62,18 +63,25 @@ const Navbar = ({
           >
             <Link to="/">Pick a Course</Link>
           </li>
-          {/* Blog section links */}
-          {blogSections.map((section, index) => (
-            <li key={index}>
-              <button
+          {blogSections &&
+            blogSections.map((section, index) => (
+              <li
+                key={index}
+                className="blog-section"
                 onClick={() => {
-                  /* Add function to handle blog section scroll */
+                  handleScrollToSection(`section-${index}`, index);
+                  toggleMenu();
                 }}
               >
-                {section.section_title}
-              </button>
-            </li>
-          ))}
+                <button
+                  className={`button-style ${
+                    selectedSection === index ? "active" : ""
+                  }`}
+                >
+                  {section.section_title}
+                </button>
+              </li>
+            ))}
         </ul>
         {menuOpen && (
           <div className="close-icon" onClick={toggleMenu}>

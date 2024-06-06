@@ -55,7 +55,7 @@
   text-decoration: underline;
 }
 
-.close-icon {
+.navbar .close-icon {
   position: absolute;
   top: 1rem;
   left: 1rem;
@@ -65,7 +65,7 @@
   display: none; /* Hide the close icon by default */
 }
 
-/* Media query for smaller screens */
+/* Mobile view */
 @media screen and (max-width: 768px) {
   .navbar-container {
     justify-content: flex-start; /* Align items to the start */
@@ -110,4 +110,36 @@
   .navbar ul.menu.open ~ .close-icon {
     display: block; /* Show the close icon when menu is open */
   }
+}
+
+/* Hide blog sections in the navbar for desktop view */
+@media screen and (min-width: 769px) {
+  .navbar .menu .blog-section {
+    display: none;
+  }
+}
+
+/* Common button styles */
+.button-style {
+  background-color: #000; /* Black background */
+  border: 0; /* Remove border */
+  color: #ff8000; /* Gold text color */
+  cursor: pointer;
+  text-align: left;
+  padding: 10px;
+  font-size: 1em;
+  width: 100%; /* Full width */
+  box-sizing: border-box;
+  transition: background-color 0.3s, color 0.3s;
+  text-align: center;
+}
+
+.button-style:hover {
+  background-color: #ff8000; /* Gold background on hover */
+  color: #000; /* Black text on hover */
+}
+
+.button-style.active {
+  background-color: #f0f0f0;
+  font-weight: bold;
 }

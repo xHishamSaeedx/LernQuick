@@ -44,6 +44,12 @@ function Blog() {
   const handleScrollToSection = (sectionId, index) => {
     setSelectedSection(index);
 
+    // Scroll to the section
+    const sectionElement = document.getElementById(sectionId);
+    if (sectionElement) {
+      sectionElement.scrollIntoView({ behavior: "smooth" });
+    }
+
     // Add active class to the clicked button and remove from others
     const buttons = document.querySelectorAll(".sidebar ul li button");
     buttons.forEach((button, i) => {
@@ -100,7 +106,12 @@ function Blog() {
 
   return (
     <div className="blog-container">
-      <Navbar handleScrollToTop={handleScrollToTop} />
+      <Navbar
+        handleScrollToTop={handleScrollToTop}
+        blogSections={blog ? blog.Sections : []} // Pass blog sections to Navbar
+        handleScrollToSection={handleScrollToSection} // Pass the section scroll handler to Navbar
+        selectedSection={selectedSection} // Pass selectedSection state to Navbar
+      />
       <div className="sidebar">
         <h2>Sections</h2>
         <ul>
@@ -111,7 +122,9 @@ function Blog() {
                   onClick={() =>
                     handleScrollToSection(`section-${index}`, index)
                   }
-                  className={selectedSection === index ? "active" : ""}
+                  className={`button-style ${
+                    selectedSection === index ? "active" : ""
+                  }`}
                 >
                   {section.section_title}
                 </button>
