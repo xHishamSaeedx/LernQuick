@@ -3,6 +3,7 @@
 /* General styles */
 .blog-container {
   display: flex;
+  flex-direction: column; /* Change to column for mobile screens */
   margin: 0;
   padding: 0;
 }
@@ -104,13 +105,17 @@
   margin-bottom: 25px;
 }
 
-/* Updated styles for code blocks */
+/* Code block */
 .code-block {
-  background-color: #f8f9fa; /* Light gray background */
+  background-color: #f8f9fa;
   padding: 20px;
   border-radius: 8px;
   margin: 20px 0;
-  position: relative; /* Added position relative for absolute button positioning */
+  position: relative;
+  overflow-x: auto;
+  text-align: left !important; /* Ensure the text is left-aligned */
+  word-wrap: break-word;
+  white-space: pre-wrap;
 }
 
 .code-header {
@@ -143,9 +148,12 @@
   background-color: #0056b3; /* Darker blue on hover */
 }
 
-/* Enlarge code text size */
+.code-block pre,
 .code-block code {
   font-size: 16px;
+  text-align: left !important; /* Ensure the text is left-aligned */
+  margin: 0;
+  padding: 0;
 }
 
 /* Increased spacing between section_content */
@@ -155,18 +163,88 @@
 
 /* More readable page_section_title */
 .heading h3 {
-  font-size: em; /* Increased font size */
+  font-size: 1.75em; /* Increased font size */
   color: #333; /* Darker color for better readability */
   margin-bottom: 20px; /* Increased margin */
 }
 
 /* Media queries */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1024px) {
+  .blog-container {
+    flex-direction: column; /* Stack items vertically */
+  }
+
   .sidebar {
-    display: none; /* Hide blog sidebar on small screens */
+    position: relative;
+    width: 100%;
+    top: 0;
+    border-right: none;
+    border-bottom: 1px solid #ff8000; /* Thin golden line on the bottom */
+    height: auto;
+    padding: 10px;
   }
 
   .blog {
-    margin-left: 0; /* Adjust margin to zero when sidebar is hidden */
+    margin-left: 0;
+    padding-top: 20px; /* Adjust top padding */
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .sidebar {
+    display: none; /* Hide sidebar on small screens */
+  }
+
+  .blog {
+    margin-left: 0;
+    padding-top: 20px; /* Adjust top padding for smaller screens */
+  }
+
+  .blog h1 {
+    font-size: 2.5em; /* Reduce main heading size on smaller screens */
+  }
+
+  .blog h2 {
+    font-size: 1.75em; /* Reduce section heading size on smaller screens */
+  }
+
+  .page-section-title-h3 {
+    font-size: 1.5em; /* Reduce subsection heading size on smaller screens */
+  }
+
+  .blog p {
+    font-size: 1em; /* Reduce paragraph text size on smaller screens */
+  }
+
+  .code-block {
+    padding: 15px; /* Reduce padding inside code blocks */
+  }
+
+  .code-block button {
+    padding: 5px 10px; /* Reduce button padding */
+    font-size: 12px; /* Reduce button text size */
+  }
+
+  .code-block pre,
+  .code-block code {
+    font-size: 14px; /* Reduce code text size */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .blog h1 {
+    font-size: 2em; /* Further reduce main heading size on very small screens */
+  }
+
+  .blog h2 {
+    font-size: 1.5em; /* Further reduce section heading size on very small screens */
+  }
+
+  .page-section-title-h3 {
+    font-size: 1.25em; /* Further reduce subsection heading size on very small screens */
+  }
+
+  .blog p {
+    font-size: 0.9em; /* Further reduce paragraph text size on very small screens */
   }
 }
