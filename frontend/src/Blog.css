@@ -105,17 +105,14 @@
   margin-bottom: 25px;
 }
 
-/* Code block */
+/* Updated styles for code blocks */
 .code-block {
-  background-color: #f8f9fa;
+  background-color: #f8f9fa; /* Light gray background */
   padding: 20px;
   border-radius: 8px;
   margin: 20px 0;
-  position: relative;
-  overflow-x: auto;
-  text-align: left !important; /* Ensure the text is left-aligned */
-  word-wrap: break-word;
-  white-space: pre-wrap;
+  position: relative; /* Added position relative for absolute button positioning */
+  overflow-x: auto; /* Ensure code blocks are scrollable */
 }
 
 .code-header {
@@ -148,12 +145,9 @@
   background-color: #0056b3; /* Darker blue on hover */
 }
 
-.code-block pre,
+/* Enlarge code text size */
 .code-block code {
   font-size: 16px;
-  text-align: left !important; /* Ensure the text is left-aligned */
-  margin: 0;
-  padding: 0;
 }
 
 /* Increased spacing between section_content */
@@ -225,7 +219,6 @@
     font-size: 12px; /* Reduce button text size */
   }
 
-  .code-block pre,
   .code-block code {
     font-size: 14px; /* Reduce code text size */
   }

@@ -1,26 +1,18 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./Navbar.css";
 
-const Navbar = ({
-  handleScrollToTop,
-  handleScrollToAbout,
-  handleScrollToContact,
-  handleScrollToCourses,
-  blogSections,
-  handleScrollToSection,
-  selectedSection, // Add selectedSection prop
-}) => {
+const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
 
-  const navigateAndScroll = (scrollToFunction) => {
-    navigate("/");
-    setTimeout(scrollToFunction, 100); // Adjust timeout as needed
-  };
-
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
+  };
+
+  const handleNavigation = (scrollTarget) => {
+    navigate("/", { state: { scrollTarget } });
+    toggleMenu();
   };
 
   return (
@@ -29,59 +21,12 @@ const Navbar = ({
         <div className="hamburger" onClick={toggleMenu}>
           ☰
         </div>
-        <h1 onClick={() => navigateAndScroll(handleScrollToTop)}>LERNQUICK</h1>
+        <h1 onClick={() => handleNavigation("top")}>LERNQUICK</h1>
         <ul className={menuOpen ? "menu open" : "menu"}>
-          <li
-            onClick={() => {
-              navigateAndScroll(handleScrollToTop);
-              toggleMenu();
-            }}
-          >
-            <Link to="/">Home</Link>
-          </li>
-          <li
-            onClick={() => {
-              navigateAndScroll(handleScrollToAbout);
-              toggleMenu();
-            }}
-          >
-            <Link to="/">About</Link>
-          </li>
-          <li
-            onClick={() => {
-              navigateAndScroll(handleScrollToContact);
-              toggleMenu();
-            }}
-          >
-            <Link to="/">Contact</Link>
-          </li>
-          <li
-            onClick={() => {
-              navigateAndScroll(handleScrollToCourses);
-              toggleMenu();
-            }}
-          >
-            <Link to="/">Pick a Course</Link>
-          </li>
-          {blogSections &&
-            blogSections.map((section, index) => (
-              <li
-                key={index}
-                className="blog-section"
-                onClick={() => {
-                  handleScrollToSection(`section-${index}`, index);
-                  toggleMenu();
-                }}
-              >
-                <button
-                  className={`button-style ${
-                    selectedSection === index ? "active" : ""
-                  }`}
-                >
-                  {section.section_title}
-                </button>
-              </li>
-            ))}
+          <li onClick={() => handleNavigation("top")}>Home</li>
+          <li onClick={() => handleNavigation("about")}>About</li>
+          <li onClick={() => handleNavigation("contact")}>Contact</li>
+          <li onClick={() => handleNavigation("courses")}>Pick a Course</li>
         </ul>
         {menuOpen && (
           <div className="close-icon" onClick={toggleMenu}>
