@@ -11,7 +11,16 @@ const Navbar = () => {
   };
 
   const handleNavigation = (scrollTarget) => {
+    // Disable smooth scrolling
+    document.documentElement.style.scrollBehavior = "auto";
+
     navigate("/", { state: { scrollTarget } });
+
+    // Re-enable smooth scrolling after a short delay
+    setTimeout(() => {
+      document.documentElement.style.scrollBehavior = "smooth";
+    }, 100);
+
     toggleMenu();
   };
 
