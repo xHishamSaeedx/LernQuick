@@ -1,5 +1,5 @@
-import React, { useRef, useState, useEffect } from "react";
-import { useLocation, Link } from "react-router-dom"; // Import Link here
+import React, { useRef } from "react";
+import { Link } from "react-router-dom";
 import Hero from "./Hero";
 import About from "./About";
 import Contact from "./Contact";
@@ -46,7 +46,6 @@ function Home() {
   const aboutRef = useRef(null);
   const contactRef = useRef(null);
   const coursesRef = useRef(null);
-  const location = useLocation();
 
   const handleScrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -72,24 +71,14 @@ function Home() {
     }
   };
 
-  useEffect(() => {
-    if (location.state && location.state.scrollTarget) {
-      const { scrollTarget } = location.state;
-      if (scrollTarget === "top") {
-        handleScrollToTop();
-      } else if (scrollTarget === "about") {
-        handleScrollToAbout();
-      } else if (scrollTarget === "contact") {
-        handleScrollToContact();
-      } else if (scrollTarget === "courses") {
-        handleScrollToCourses();
-      }
-    }
-  }, [location]);
-
   return (
     <div className="home">
-      <Navbar />
+      <Navbar
+        handleScrollToTop={handleScrollToTop}
+        handleScrollToAbout={handleScrollToAbout}
+        handleScrollToContact={handleScrollToContact}
+        handleScrollToCourses={handleScrollToCourses}
+      />
       <Hero />
       <div id="about-section" ref={aboutRef}>
         <About />
